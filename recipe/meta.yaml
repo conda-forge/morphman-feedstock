@@ -10,7 +10,7 @@ source:
   sha256: da9a812e475b6924ffd85a416ec3276a4254e41b29963735bf7a13c40164b460
 
 build:
-  number: 0
+  number: 1
   entry_points:
     - morphman-area=morphman.manipulate_area:main_area
     - morphman-bend=morphman.manipulate_bend:main_bend
@@ -24,19 +24,20 @@ build:
 requirements:
   host:
     - pip
-    - python >=3.8
+    - python {{ python_min }}
   run:
     - numpy
     - scipy
     - vtk
     - vmtk
-    - python >=3.8
+    - python >={{ python_min }}
 
 test:
   imports:
     - morphman
   requires:
     - pip
+    - python {{ python_min }}
   commands:
     - pip check
     - morphman-area --help
